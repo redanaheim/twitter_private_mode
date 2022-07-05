@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="./index.js"></script>
+        <link rel="stylesheet" href="index.css"/>
+    </head>
+    <body>
+        <table style="padding: 10px;">
+            <tbody>
+                <tr>
+                    <td>
+                        Real Twitter Name
+                    </td>
+                    <td colspan="2">
+                        <input id="name" placeholder="Jack"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Real Twitter At
+                    </td>
+                    <td colspan="2">
+                        <div style="padding-left: 2px; vertical-align: middle; height: 1.5em; box-sizing: border-box; border: 1px solid darkslategrey; border-radius: 2px;"">
+                            @
+                            <input style="box-sizing: content-box; height: calc(1.5em - 2px); background: transparent; border: none; display: inline; vertical-align: middle; padding: 0px; margin: 0px; margin-top: auto; margin-bottom: auto; width: max-content;" id="at" placeholder="jackyboy"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Randomness Seed 1 (should be prime)
+                    </td>
+                    <td>
+                        <input id="seed_one" type="number" step="1" min="1"/>
+                    </td>
+                    <td>
+                        <button id="generate_seed_one">Generate</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Randomness Seed 2 (should be prime)
+                    </td>
+                    <td>
+                        <input id="seed_two" type="number" step="1" min="1"/>
+                    </td>
+                    <td>
+                        <button id="generate_seed_two">Generate</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        List of Possible Names (line separated)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <textarea id="names" rows="10"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
