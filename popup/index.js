@@ -22,7 +22,7 @@ const bind_value = async (element_id, property_name, type, dfault) => {
 
 const is_prime = num => {
     for (let i = 2, s = Math.sqrt(num); i <= s; i++) {
-        if(num % i === 0) {
+        if (num % i === 0) {
             return false;
         }
     }

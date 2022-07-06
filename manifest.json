@@ -2,8 +2,8 @@
 
     "manifest_version": 2,
     "name": "Twitter Private Mode",
-    "version": "1.0",
-  
+    "version": "1.0.1",
+
     "description": "Can show a fake name in place of your name and at on Twitter.com so lookers-on can't stalk your tweets. Allows you to select a random name and at each day from a list you make.",
 
     "content_scripts": [

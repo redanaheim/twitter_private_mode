@@ -14,6 +14,35 @@ const escape_reg_exp = (str) => {
 };
 
 /**
+ * @param {number} num
+ * @returns whether num is prime
+ */
+const is_prime = num => {
+    for (let i = 2, s = Math.sqrt(num); i <= s; i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+    return num > 1;
+}
+
+/**
+ * @param {number} num
+ * @returns xth prime where x is num
+ */
+const xth_prime = (num) => {
+    let count = 1;
+    let i = 2;
+    while (count < num) {
+        i++;
+        if (is_prime(i)) {
+            count++;
+        }
+    }
+    return i;
+}
+
+/**
  * @param {string} key
  */
 const storage_get = async (key) => {
@@ -47,9 +76,10 @@ const storage_get = async (key) => {
     const SECONDS_IN_DAY = 24 * 60 * 60;
     const SECONDS_TIMESTAMP = Math.floor(new Date().getTime() / 1000);
     const DAY = Math.floor(SECONDS_TIMESTAMP / SECONDS_IN_DAY);
-    const RANDOM_NAME = POSSIBLE_NAMES[(DAY * FACTOR_NAME) % POSSIBLE_NAMES.length];
-    const RANDOM_AT = POSSIBLE_NAMES[(DAY * FACTOR_AT) % POSSIBLE_NAMES.length].toLowerCase().replaceAll(/\s+/g, "_");
-    
+    const DAY_FACTOR = xth_prime(DAY);
+    const RANDOM_NAME = POSSIBLE_NAMES[(DAY_FACTOR * FACTOR_NAME) % POSSIBLE_NAMES.length];
+    const RANDOM_AT = POSSIBLE_NAMES[(DAY_FACTOR * FACTOR_AT) % POSSIBLE_NAMES.length].toLowerCase().replaceAll(/\s+/g, "_");
+
     /**
      * @param {string} str
      */
