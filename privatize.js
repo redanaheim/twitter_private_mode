@@ -71,8 +71,8 @@ const storage_get = async (key) => {
     
     const RANDOM_ID = Math.round(Math.random() * 65536);
     
-    const FACTOR_NAME = Math.pow(await storage_get("seed_one"), 1);
-    const FACTOR_AT = Math.pow(await storage_get("seed_two"), 1);
+    const FACTOR_NAME = Math.pow(await storage_get("seed_one"), 2);
+    const FACTOR_AT = Math.pow(await storage_get("seed_two"), 2);
     const SECONDS_IN_DAY = 24 * 60 * 60;
     const SECONDS_TIMESTAMP = Math.floor(new Date().getTime() / 1000);
     const DAY = Math.floor(SECONDS_TIMESTAMP / SECONDS_IN_DAY);

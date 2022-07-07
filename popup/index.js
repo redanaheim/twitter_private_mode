@@ -1,9 +1,12 @@
-const bind_value = async (element_id, property_name, type, dfault) => {
+const bind_value = async (element_id, property_name, type, dfault, trim) => {
     const update = async () => {
         if (type === "number") {
             await browser.storage.local.set({[property_name]: Number(document.getElementById(element_id).value)});
         }
-        else await browser.storage.local.set({[property_name]: document.getElementById(element_id).value});
+        else if (trim === true) await browser.storage.local.set({[property_name]: document.getElementById(element_id).value.split("\n").map(x => x.trim()).join("\n")});
+        else {
+            await browser.storage.local.set({[property_name]: document.getElementById(element_id).value});
+        }
     }
 
     let input = document.getElementById(element_id);
@@ -34,7 +37,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     await bind_value("at", "twitter_at", "string", "");
     await bind_value("seed_one", "seed_one", "number", 2985749017);
     await bind_value("seed_two", "seed_two", "number", 8411387849);
-    await bind_value("names", "replacement_names", "string", "Jimmy John\nPapa Murphy")
+    await bind_value("names", "replacement_names", "string", "Jimmy John\nPapa Murphy", true)
 
     let btns = [document.getElementById("generate_seed_one"), document.getElementById("generate_seed_two")];
     let corresponding = ["seed_one", "seed_two"];
@@ -65,4 +68,10 @@ window.addEventListener("DOMContentLoaded", async () => {
             await set(i);
         }
     })
+
+    document.getElementById("generate_both").onclick = async () => {
+        btns.forEach(async x => {
+            await x.onclick()
+        });
+    }
 });
