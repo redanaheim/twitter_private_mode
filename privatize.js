@@ -96,7 +96,7 @@ const storage_get = async (key) => {
     const for_text_in_children = (el, closure) => {
         if (el.nodeType === Node.TEXT_NODE) {
             const parent = el.parentNode;
-            if (parent.nodeType === Node.ELEMENT_NODE && (parent.tagName === "SCRIPT" || parent.tagName === "STYLE" || parent.tagName === "NOSCRIPT")) {
+            if (parent.nodeType === Node.ELEMENT_NODE && (parent.tagName === "SCRIPT" || parent.tagName === "STYLE" || parent.tagName === "NOSCRIPT" || parent.isContentEditable)) {
                 return;
             }
             else if (el.textContent.trim().length === 0) {
